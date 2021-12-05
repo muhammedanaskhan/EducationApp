@@ -7,6 +7,7 @@
     tools:context=".SignUpActivity">
 
 
+
     <TextView
         android:id="@+id/create_account_heading"
         android:layout_width="wrap_content"
@@ -230,7 +231,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.617"
         />
 
@@ -240,7 +240,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.77"
         />
 
@@ -251,8 +250,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.18"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        app:layout_constraintGuide_percent="0.05"
+        />
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintTop_toBottomOf="@id/guideline11"
         />
 
 

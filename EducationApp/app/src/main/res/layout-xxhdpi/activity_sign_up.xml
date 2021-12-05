@@ -73,6 +73,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:onClick="register_activity_start"
         app:layout_constraintBottom_toBottomOf="@id/image_guideline_bottom"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toEndOf="@+id/signup_message">
@@ -187,7 +188,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.243"
         />
 
@@ -196,7 +196,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.378"
         />
 
@@ -205,7 +204,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.5"
         />
 
@@ -214,8 +212,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.617"
         />
 
@@ -224,8 +220,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.7"
         />
 
@@ -235,8 +229,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/guideline8"
-        app:layout_constraintBottom_toBottomOf="@id/login_heading"
         app:layout_constraintGuide_percent="0.18"
         />
 
