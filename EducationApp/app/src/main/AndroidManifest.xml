@@ -11,6 +11,8 @@
         android:theme="@style/Theme.EducationApp">
         <activity
             android:name=".activities.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"
