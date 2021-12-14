@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.165234375" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.162109375" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout-hdpi/activity_register.xml" value="0.16" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout-hdpi/activity_sign_up.xml" value="0.14719945355191258" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout-mdpi/activity_register.xml" value="0.14719945355191258" />
@@ -15,9 +16,11 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout-xxxhdpi/activity_register.xml" value="0.14719945355191258" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout-xxxhdpi/activity_sign_up.xml" value="0.14719945355191258" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/activity_base.xml" value="0.14105191256830601" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/activity_main.xml" value="0.14959016393442623" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/activity_register.xml" value="0.14" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/dialog_progress.xml" value="0.14105191256830601" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/layout/nav_header.xml" value="0.13866120218579234" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/EducationApp/app/src/main/res/menu/nav_drawer_menu.xml" value="0.15" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/app/src/main/res/drawable/custom_input.xml" value="0.2203125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/EducationApp/app/src/main/res/drawable/ic_first.xml" value="0.22" />
