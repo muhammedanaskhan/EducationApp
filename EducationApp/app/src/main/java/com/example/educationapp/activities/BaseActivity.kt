@@ -64,7 +64,4 @@ open class BaseActivity : AppCompatActivity() {
         snackBar.show()
     }
 
-
-
-
 }

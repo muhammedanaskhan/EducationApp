@@ -1,46 +1,118 @@
 package com.example.educationapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import com.example.educationapp.R
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.w3c.dom.Text
+import java.lang.Exception
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
-    lateinit var toggle: ActionBarDrawerToggle
+
+    private lateinit var database: DatabaseReference
+
+    val pdfRef = Firebase.storage.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var actionBar= supportActionBar
+        setUpActionBar()
 
-        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        navView.setNavigationItemSelectedListener(this)
 
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        val view = findViewById(R.id.tvPdfName) as TextView
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //database = Firebase.database.reference
 
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.home_item -> Toast.makeText(applicationContext,"clicked item1 ",Toast.LENGTH_SHORT).show()
-                R.id.favourites_item -> Toast.makeText(applicationContext,"clicked item2 ",Toast.LENGTH_SHORT).show()
-                R.id.logout_item -> Toast.makeText(applicationContext,"clicked item3 ",Toast.LENGTH_SHORT).show()
+
+    }
+
+    private fun setUpActionBar(){
+        setSupportActionBar(toolbar_main_activity)
+        toolbar_main_activity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
+
+        toolbar_main_activity.setNavigationOnClickListener {
+            toggleDrawer()
+        }
+
+    }
+
+    private fun toggleDrawer(){
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }else{
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
+
+    override fun onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }else{
+            doubleBackToExit()
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+
+            R.id.nav_sign_out -> {
+
+                FirebaseAuth.getInstance().signOut()
+
+                val intent = Intent(this,SignUpActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
+
+                Toast.makeText(this@MainActivity,"logout",Toast.LENGTH_SHORT).show()
+
             }
-            true
+
+            R.id.nav_home -> {
+
+                Toast.makeText(this@MainActivity,"home",Toast.LENGTH_SHORT).show()
+
+            }
+
+
         }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    private fun downloadImage(filename: String) = CoroutineScope(Dispatchers.IO).launch{
+//
+//        try {
+//            val bytes = pdfRef.child("pdfs/$filename").getBytes()
+//        }catch (e: Exception){
+//            withContext(Dispatchers.Main){
+//                Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+//            }
+//        }
+//
+//    }
 
 }

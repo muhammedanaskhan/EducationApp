@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.educationapp.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.w3c.dom.Text
 
@@ -25,6 +26,11 @@ class SignUpActivity : BaseActivity() {
         auth = FirebaseAuth.getInstance()
 
         window.statusBarColor = this.resources.getColor(R.color.colorMain)
+
+        if(auth.currentUser != null){
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
 
         login_buttom.setOnClickListener {
             signInUser()
