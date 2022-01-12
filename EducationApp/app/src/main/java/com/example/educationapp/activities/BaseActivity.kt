@@ -46,6 +46,7 @@ open class BaseActivity : AppCompatActivity() {
     fun doubleBackToExit(){
         if(doublePressToExitApp){
             super.onBackPressed()
+            finishAffinity()
             return
         }
         this.doublePressToExitApp = true

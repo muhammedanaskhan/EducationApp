@@ -11,10 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.educationapp.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,8 +32,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     private lateinit var database: DatabaseReference
+    private lateinit var pdfRecyclerView: RecyclerView
+    private lateinit var pdfArrayList: ArrayList<Note>
+
 
     val pdfRef = Firebase.storage.reference
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +48,50 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         navView.setNavigationItemSelectedListener(this)
 
-        val view = findViewById(R.id.tvPdfName) as TextView
+        //val view = findViewById(R.id.tvPdfName) as TextView
 
         //database = Firebase.database.reference
 
+        pdfRecyclerView = findViewById(R.id.notesList)
+        pdfRecyclerView.layoutManager = LinearLayoutManager(this)
+        pdfRecyclerView.setHasFixedSize(true)
+
+        pdfArrayList = arrayListOf<Note>()
+
+
+        getNoteData()
+
+
+    }
+
+    private fun getNoteData() {
+
+
+        database = FirebaseDatabase.getInstance().getReference("Notes")
+
+        database.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if(snapshot.exists()){
+                    for( userSnapshot in snapshot.children ){
+
+                        val pdf = userSnapshot.getValue(Note::class.java)
+
+                        pdfArrayList.add(pdf!!)
+
+                    }
+
+                    pdfRecyclerView.adapter = MyAdapter(pdfArrayList)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+
+        })
 
     }
 
