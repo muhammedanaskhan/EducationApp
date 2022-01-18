@@ -10,10 +10,22 @@ import org.w3c.dom.Text
 
 class MyAdapter(private val notesList : ArrayList<Note>): RecyclerView.Adapter<MyAdapter.myViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+
+        fun onItemClick(position : Int)
+
+}
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.notes_item,parent,false)
-        return myViewHolder(itemView)
+        return myViewHolder(itemView, mListener)
 
     }
 
@@ -31,10 +43,16 @@ class MyAdapter(private val notesList : ArrayList<Note>): RecyclerView.Adapter<M
 
     }
 
-    class myViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class myViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
 
         val pdfName : TextView = itemView.findViewById(R.id.tvPdfName)
         val pdfLink : TextView = itemView.findViewById(R.id.tvPdfLink)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
 
     }
 

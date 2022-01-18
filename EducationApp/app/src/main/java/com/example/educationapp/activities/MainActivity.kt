@@ -80,8 +80,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         pdfArrayList.add(pdf!!)
 
                     }
+                    val adapter= MyAdapter(pdfArrayList)
+                    pdfRecyclerView.adapter = adapter
 
-                    pdfRecyclerView.adapter = MyAdapter(pdfArrayList)
+                    adapter.setOnItemClickListener(object: MyAdapter.onItemClickListener{
+                        override fun onItemClick(position: Int) {
+                            Toast.makeText(this@MainActivity,"new item clcik",Toast.LENGTH_LONG).show()
+                        }
+
+
+                    })
+
+
                 }
 
             }
